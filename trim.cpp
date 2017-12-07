@@ -10,3 +10,53 @@
  * Test functions for trim.h
  * ----------------------------------------------------------
  */
+#include "trim.h"
+
+void trim(const char* source,char* trimmed_string)
+{
+  int count = strlen(source);
+  char newString[STRLEN];
+  int countBlanks = 0;
+  int countNewString = 0;
+  bool check = false;
+  bool anotherCheck = false;
+  if(count == 0)
+  {
+      strcpy(trimmed_string,source);
+  }
+  else{
+    for (int i = 0; i < count; i++) {
+    if(source[i] != ' ')
+    {
+      if(anotherCheck == true)
+      {
+        newString[countNewString] = ' ';
+        countNewString++;
+        newString[countNewString] = source[i];
+      }
+      else
+      {
+        newString[countNewString] = source[i];
+      }
+      countNewString++;
+      check = true;
+      if(countBlanks != 0)
+      {
+        anotherCheck = false;
+        countBlanks--;
+      }
+    }
+    else if(check == true){
+      anotherCheck = true;
+      countBlanks++;
+    }
+    if(countBlanks == 2)
+    {
+      i = count;
+    }
+
+  }
+  strcpy(trimmed_string,newString);
+  }
+
+}
