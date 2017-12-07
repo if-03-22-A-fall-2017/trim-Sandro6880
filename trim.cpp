@@ -58,5 +58,4 @@ void trim(const char* source,char* trimmed_string)
   }
   strcpy(trimmed_string,newString);
   }
-
 }
